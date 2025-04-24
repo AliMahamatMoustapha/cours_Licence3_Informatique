@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>EXO2</title>
+    <link rel="stylesheet" href="./style.css">
+  </head>
+  <body>
+    <form action="./recup.php" method="post">
+      <label>
+        Votre nom
+        <input type="text" name="nom" value="">
+      </label>
+      <fieldset id='lang'>
+        <legend>Les langues que vous parlez</legend>
+        <label>
+          <input type="checkbox" name="couleur[fr]" value="oui">
+          français
+        </label>
+        <label>
+          <input type="checkbox" name="couleur[an]" value="oui">
+          anglais
+        </label>
+        <label>
+          <input type="checkbox" name="couleur[al]" value="oui">
+          allemand
+        </label>
+      </fieldset>
+      <fieldset >
+        <legend>Votre couleur préférée</legend>
+        <label>
+          <input type="radio" name="couleur" value="rouge">
+          rouge
+        </label>
+        <label>
+          <input type="radio" name="couleur" value="bleu">
+          bleu
+        </label>
+        <label>
+          <input type="radio" name="couleur" value="vert">
+          vert
+        </label>
+      </fieldset>
+      <button type="submit">Envoyer</button>
+    </form>
+  </body>
+</html>

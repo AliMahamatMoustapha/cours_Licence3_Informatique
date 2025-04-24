@@ -1,0 +1,31 @@
+*{
+    width: auto;
+    outline: 0px;
+    padding: 0px;
+    margin: 0px;
+}
+li{
+    display: inline;
+    border: 2px tomato dotted;
+    padding: 2px;
+    margin-right: 5px;
+    background-color: tomato;
+    border-radius: 3px;
+}
+ul{
+    margin: 10px;
+}
+a{
+    color: white;
+    text-decoration-line: none;
+}
+table,tr,td{
+    border: 1px black solid;
+}
+table{
+border-collapse: collapse;
+padding: 10px;
+margin: 10px;}
+td{ text-align: center;}
+tr:nth-child(even) {background-color: tomato;}
+tr:nth-child(odd) {background-color: orange;}

@@ -1,0 +1,10 @@
+html{
+  background-color: white;
+}
+ul{
+  display: inline;
+  list-style-type: none;
+}
+li{
+  display: inline;
+}

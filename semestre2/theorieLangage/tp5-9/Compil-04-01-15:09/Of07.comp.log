@@ -1,0 +1,4 @@
+Warning: TestRig moved to org.antlr.v4.gui.TestRig; calling automatically
+line 16:24 mismatched input 'double' expecting {'-', '(', ENTIER, DOUBLE, BOOL, IDENTIFIANT}
+line 16:31 mismatched input 'i' expecting {'-', '*', '/', '%', '+', ')'}
+line 16:34 extraneous input ')' expecting {';', NEWLINE}

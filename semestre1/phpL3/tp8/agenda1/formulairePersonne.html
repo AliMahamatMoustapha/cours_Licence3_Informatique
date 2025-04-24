@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<head>
+  <title>Agenda</title>
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+</head>
+<?php
+$corps =<<<EOT
+<html>
+<body>
+  <form method="post" action="index.php?action=saisir" name="form_user" >
+
+  <label> Nom </label>
+  <input type="text" name="nom" size="40" value="">
+  <span class="w3-text-red">{$erreur["nom"]}</span><br/>
+
+  <label> Prénom </label>
+  <input type="text" name="prenom" size="40" value="">
+  <span class="w3-text-red">{$erreur["prenom"]}</span><br/>
+
+  <label> Date de naissance </label>
+  <input type="text" name="dateN" size="40" value="">
+  <span class="w3-text-red">{$erreur["dateN"]}</span><br/>
+
+  <label> Lieu de naissance </label> 
+  <input type="text" name="lieuN" size="40" value="">
+  <span class="w3-text-red">{$erreur["lieuN"]}</span><br/>
+
+  <label> Téléphone </label>
+  <input type="text" name="telephone" size="40" placeholder="xx xx xx xx xx" value="">
+  <span class="w3-text-red">{$erreur["telephone"]}</span><br/>
+
+  <label> Adresse </label>
+  <textarea name="adresse" cols='40' rows='3' > </textarea>
+  <span class="w3-text-red">{$erreur["adresse"]}</span><br/>
+  
+  <input type="submit" name="user_valider" value="Valider" size="" > 
+</form>
+</body>
+</html>
+EOT;
+?>

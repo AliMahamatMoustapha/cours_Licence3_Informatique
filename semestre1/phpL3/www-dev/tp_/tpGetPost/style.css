@@ -1,0 +1,17 @@
+body{
+  text-align: center;
+}
+form{
+  width: 400px;
+  text-align: center;
+  border: 1px solid black;
+  padding: 15px;
+  margin: 20px;
+}
+
+fieldset{
+  border: px solid black;
+}
+#lang{
+  display: block;
+}

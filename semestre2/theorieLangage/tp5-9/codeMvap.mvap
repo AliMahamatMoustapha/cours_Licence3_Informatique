@@ -1,0 +1,10 @@
+JUMP start
+LABEL start
+PUSHI 1
+JUMPF Label1
+PUSHI 5
+WRITE
+POP
+LABEL Label1
+HALT
+

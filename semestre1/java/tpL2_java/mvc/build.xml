@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="feu_tricolor" default="run" basedir=".">
+
+    <!-- ==================== Definition de variables =========================== -->
+    <property name="app.name"      value="feuTricolor" />
+    <property name="app.version"   value="0.1"/>
+    <property name="app.fullname"   value="${app.name}-${app.version}"/>
+
+    <property name="build"    value="${basedir}/build"/>
+    <property name="dist"     value="${basedir}/dist"/>
+    <property name="src"      value="${basedir}/src"/>
+    <property name="lib"      value="${basedir}/lib"/>
+    <property name="mainClass"      value="vue.Main"/>
+
+    <!-- ==================== Definition variable de compilation =========================== -->
+    <property name="javac.encoding"      value="UTF-8"/>
+    <property name="compile.debug"       value="true"/>
+    <property name="compile.deprecation" value="false"/>
+    <property name="compile.optimize"    value="true"/>
+
+           
+    <!-- ==================== Compilation Classpath =========================== -->
+
+    <path id="compile.classpath">
+        <fileset dir="${lib}">
+            <include name="**/*.jar"/>
+        </fileset>
+    </path>
+
+    <!-- ==================== All Target ====================================== -->
+
+    <target name="all" depends="clean,compile" description="Clean build and dist directories, then compile"/>
+
+    <!-- ==================== Clean Target ==================================== -->
+
+    <target name="clean" description="Delete old build and dist directories">
+        <delete dir="${build}"/>
+        <delete dir="${dist}"/>
+    </target>
+
+    <!-- ==================== Prepare Target ================================== -->
+    <target name="prepare">
+        <mkdir dir="${build}"/>
+        <mkdir dir="${dist}"/>
+        <mkdir dir="${dist}/docs"/>
+    </target>
+
+    <!-- ==================== Compile Target ================================== -->
+    <target name="compile" depends="prepare" description="Compile Java sources">
+
+        <javac srcdir="${src}"
+            destdir="${build}"
+            debug="${compile.debug}"
+            deprecation="${compile.deprecation}"
+            optimize="${compile.optimize}"
+            encoding="${javac.encoding}"
+        >
+            <classpath refid="compile.classpath"/>
+        </javac>
+
+        <!-- 
+        <javac srcdir="${src.test}" destdir="${build.test}"> 
+        <classpath>
+            <pathelement location="${build}"/>
+            <path refid="compile.classpath"/>
+        </classpath>
+
+        </javac> 
+        -->
+
+        <!-- Copy application resources -->
+        <copy todir="${build}">
+            <fileset dir="${src}" excludes="**/*.java"/>
+        </copy>
+    </target>
+
+    <!-- ==================== Dist Target ===================================== -->
+    <target name="dist" depends="clean,javadoc" description="Create binary distribution">
+        <copy  todir="${dist}/lib">
+            <fileset dir="${lib}"/>
+        </copy>
+        <!-- Create application JAR file -->
+        <jar jarfile="${dist}/${app.fullname}.jar"
+             basedir="${build}">
+            <manifest>
+                <attribute name="Main-Class" value="${mainClass}"/>
+                <!-- <attribute name="Class-Path" value="lib/utilsGL.jar" />  -->
+            </manifest>
+        </jar>
+    </target>
+    <!-- ==================== Javadoc Target ================================== -->
+    <target name="javadoc" depends="compile" description="Create Javadoc API documentation">
+        <javadoc sourcepath="${src}"
+                 destdir="${dist}/docs"
+                 packagenames="*">
+            <classpath>
+                <fileset dir="${lib}">
+                    <include name="**/*.jar"/>
+                </fileset>
+            </classpath>
+        </javadoc>
+    </target>
+    <!-- ==================== Run Target ================================== -->
+	
+    <target name="run" depends="dist">
+        <java jar="${dist}/${app.fullname}.jar" fork="true" />
+    </target>
+	
+
+    <!-- ==================== Test Target ===================================== -->
+<!--     
+    <target name="test" depends="clean,compile,dist">
+        <junit fork="true"  printsummary="withOutAndErr" haltonfailure="false" showoutput="true" logfailedtests="true">
+            <classpath> 
+                <pathelement location="${build.test}"/>
+                <pathelement location="${build}"/>
+                <path refid="compile.classpath"/>
+            </classpath>
+        <formatter type="xml"/>
+            <batchtest   todir="${test.report}">           
+                <fileset dir="${build.test}">
+                    <include name="**/*Test.class"/>
+                </fileset> 
+                <fileset dir="${build.test}" includes="**/*Test.class"/>
+            </batchtest>
+        </junit>
+    </target>
+    <target name="junitreport" depends="test">
+        <junitreport todir="${test.report}">
+            <fileset dir="${test.report}" includes="TEST-*.xml"/>
+            <report todir="${test.report}"/>
+        </junitreport>
+    </target> 
+-->
+
+</project>
+

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        .t{
+            border-top: 30;
+            border-left: 30;
+           border-color: black;
+        }
+
+    </style>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>formulaire</title>
+</head>
+<body>
+    <form action="https://ensweb.users.info.unicaen.fr/TW3/tp/mult/multiplication.php?borne=intval($_GET[borne])" method="get" name="formu">
+        <label for="affiche">Taille de la table :</label>
+        <input class="t" type="number" name="borne" id="affiche" max="100" min="1">
+        <input type="submit" value="Afficher">
+
+    </form>
+</body>
+</html>
