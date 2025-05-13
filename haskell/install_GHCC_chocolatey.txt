@@ -1,0 +1,26 @@
+
+1) Installer CHocolatey  (un gestionnaire de paquets)
+2) Instaler GHC ou tout autre paquet
+
+
+
+Installer Chocolatey: suivre instructions dans https://chocolatey.org/install
+qui sont résumées ici:
+
+- Lancer Powershell  comme administrateur
+-  lancer 'Get-ExecutionPolicy' 
+- si la réponse est 'Restricted' alors
+   lancer 'Set-ExecutionPolicy AllSigned' ou  'Set-ExecutionPolicy Bypass -Scope Process'
+   
+- lancer
+ Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
+ 
+ - tester l'installation avec 'choco' ou 'choco -?'
+ 
+ - installer GHC avec
+    choco install ghc
+    
+    
+ - Pour installer tout autre package, voir dans 
+ https://community.chocolatey.org/packages?q=haskell
+
